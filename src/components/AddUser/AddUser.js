@@ -5,7 +5,7 @@ const AddUser = () => {
         event.preventDefault();
         const name = event.target.name.value;
         const email = event.target.email.value;
-        const user = {name, email};
+        const user = { name, email };
 
         // SEND DATA TO SERVER
         fetch('http://localhost:5000/', {
@@ -16,8 +16,11 @@ const AddUser = () => {
             body: JSON.stringify(user)
         })
             .then(res => res.json())
-            .then(data =>
-                console.log('success', data)
+            .then(data => {
+                console.log('success', data);
+                alert('User added successfully');
+                event.target.reset();
+            }
             )
     }
 
